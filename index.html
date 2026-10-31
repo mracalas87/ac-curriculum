@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf8f3">
+  <title>AC Curriculum</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta name="description" content="Year 1 resources and platforms, all in one place.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbf8f3; --ink: #14213d; --muted: #4a5568; --card: #ffffff; --line: #e7e1d6;
+      --brand: #2b4acb; --ruled: #d9e7f4; --focus: #2b4acb;
+    }
+    * { box-sizing: border-box; }
+    html { font-size: 112.5%; }
+    body {
+      margin: 0; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column;
+      font-family: "Patrick Hand", ui-rounded, "Avenir Next", "Segoe UI", system-ui, sans-serif;
+      background-color: var(--bg); color: var(--ink); line-height: 1.4; -webkit-font-smoothing: antialiased;
+      background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 29px, var(--ruled) 29px, var(--ruled) 30px);
+    }
+    .skip { position: absolute; left: 1rem; top: -4rem; z-index: 10; background: var(--ink); color: #fff; padding: .6rem 1rem; border-radius: 10px; }
+    .skip:focus { top: 1rem; }
+
+    .top { display: flex; justify-content: flex-end; gap: .6rem; padding: .8rem 1.2rem; }
+    .top a {
+      color: var(--ink); text-decoration: none; font-size: 1.05rem; padding: .35rem 1rem; min-height: 40px;
+      display: inline-flex; align-items: center; background: var(--card); border: 2px solid var(--ink); border-radius: 999px;
+      box-shadow: 0 3px 0 var(--ink);
+    }
+    .top a:active { transform: translateY(3px); box-shadow: none; }
+
+    main { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 1.25rem 1.5rem; }
+    .hero { text-align: center; padding: .2rem 0 .8rem; }
+    .hero-logo { width: 72px; height: 72px; border-radius: 50%; background: #fff; border: 4px solid #fff; box-shadow: 0 0 0 2px var(--line), 0 6px 16px rgba(20, 33, 61, .12); }
+    .wordmark { margin: .4rem 0 .2rem; line-height: 1; }
+    .wordmark .ac { display: block; font-family: "Fredoka", ui-rounded, sans-serif; font-size: clamp(2.6rem, 9vw, 3.8rem); font-weight: 700; letter-spacing: -.03em; color: var(--brand); transform: rotate(-2deg); }
+    .wordmark .rest { display: block; margin-top: .25rem; font-size: clamp(.9rem, 3.4vw, 1.4rem); letter-spacing: .34em; text-transform: uppercase; padding-left: .34em; }
+    .lead { margin: .5rem auto 0; font-size: 1.15rem; color: var(--muted); }
+
+    .years { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin: .8rem 0 1.4rem; }
+    .year {
+      font: inherit; font-size: 1.15rem; min-height: 44px; padding: .3rem 1.3rem; cursor: pointer;
+      background: var(--card); color: var(--brand); border: 2px solid var(--brand); border-radius: 999px; box-shadow: 0 3px 0 var(--brand);
+    }
+    .year[aria-pressed="true"] { background: var(--brand); color: #fff; }
+    .year:active { transform: translateY(3px); box-shadow: none; }
+    h2.year-title { text-align: center; margin: 0 0 .2rem; font-family: "Fredoka", ui-rounded, sans-serif; font-size: 1.5rem; }
+    .year-blurb { text-align: center; margin: 0 0 1.6rem; color: var(--muted); font-size: 1.1rem; }
+
+    .tiles { list-style: none; margin: 0; padding: .6rem 0 1rem; display: grid; gap: 1.8rem 1.3rem; grid-template-columns: repeat(auto-fit, minmax(240px, 300px)); justify-content: center; }
+    .tile {
+      position: relative; display: block; height: 100%; padding: 1.3rem 1rem .9rem; text-decoration: none; color: var(--ink);
+      background: var(--card); border: 2px solid var(--ink); border-radius: 6px; box-shadow: 4px 5px 0 var(--accent);
+      transform: rotate(var(--tilt, -1deg)); transition: transform .15s ease, box-shadow .15s ease;
+      -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+    }
+    .tiles > li:nth-child(2n) .tile { --tilt: 1.2deg; }
+    .tile .tape {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%) rotate(-2deg); white-space: nowrap;
+      display: inline-flex; align-items: center; gap: .3rem; padding: .05rem .8rem .05rem .3rem; border-radius: 4px;
+      background: var(--accent); color: #fff; font-size: .95rem; box-shadow: 1px 2px 0 rgba(0, 0, 0, .2);
+    }
+    .tape-icon { width: 1.15rem; height: 1.15rem; display: inline-flex; background: rgba(255, 255, 255, .28); border-radius: 50%; padding: .16rem; }
+    .icon-svg, .icon-svg svg { display: inline-flex; width: 100%; height: 100%; }
+    .tile-icon { float: left; width: 3rem; height: 3rem; margin: 0 .7rem .2rem 0; color: var(--accent); }
+    .tile-title { display: block; font-size: 1.45rem; line-height: 1.05; margin-top: .15rem; }
+    .tile-sum { display: block; clear: both; margin-top: .5rem; font-size: 1.05rem; line-height: 1.25; color: var(--muted); }
+    .tile-cta { display: inline-block; margin-top: .7rem; font-size: 1rem; padding: .1rem .9rem; border-radius: 999px; background: var(--ink); color: #fff; }
+    a.tile:hover { transform: rotate(0) scale(1.04); box-shadow: 6px 7px 0 var(--accent); }
+    a.tile:active { transform: rotate(0) translateY(3px); box-shadow: 1px 2px 0 var(--accent); transition-duration: .04s; }
+    .tile.disabled { border-style: dashed; box-shadow: none; }
+    .tile.disabled .tile-cta { background: #f1ede4; color: var(--muted); }
+    a:focus-visible, button:focus-visible { outline: 4px solid var(--focus); outline-offset: 3px; }
+
+    footer { text-align: center; color: var(--muted); padding: .4rem 1rem 1rem; font-size: .95rem; }
+    @media (max-width: 520px) {
+      .tiles { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a href="https://ac-edu-hub.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Games. Opens in a new tab.">Games</a>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero">
+      <img class="hero-logo" src="logo.png" alt="" width="72" height="72">
+      <h1 class="wordmark"><span class="ac">AC</span><span class="rest" id="site-name">Curriculum</span></h1>
+      <p class="lead" id="tagline"></p>
+    </section>
+    <div class="years" id="years" role="group" aria-label="Choose a year"></div>
+    <h2 class="year-title" id="year-title"></h2>
+    <p class="year-blurb" id="year-blurb"></p>
+    <ul class="tiles" id="tiles" role="list"></ul>
+    <noscript><p class="lead">This site needs JavaScript to show the resources.</p></noscript>
+  </main>
+  <footer>Resources open in a new tab. Created by Andy</footer>
+  <script src="curriculum.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
