@@ -30,10 +30,10 @@ window.RESOURCES = [
   {
     year: "year1",
     title: "Weird and Wonderful",
-    area: "New platform",
+    area: "STEAM",
     colour: "#7cb518",
     icon: "sparkle",
-    summary: "A brand new Year 1 platform, being built right now. Watch this space!",
-    url: ""
+    summary: "Seven lessons of big questions for Year 1. Look closely, ask why, and find out how the world works.",
+    url: "https://ac-weird-and-wonderful.vercel.app/"
   }
 ];
