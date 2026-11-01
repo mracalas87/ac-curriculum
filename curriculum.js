@@ -10,7 +10,7 @@
 
 window.SITE = {
   name: "AC Curriculum",
-  tagline: "Year 1 resources, all in one place."
+  tagline: "Resources for each year, all in one place."
 };
 
 window.YEARS = [
