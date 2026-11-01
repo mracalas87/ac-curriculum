@@ -23,6 +23,7 @@
   var ICONS = {
     pixels: pixels,
     sparkle: '<path d="M14 3l2.8 7.9L25 14l-8.2 3.1L14 25l-2.8-7.9L3 14l8.2-3.1z"/><path d="M26 20l1.1 3 3 1.1-3 1.1-1.1 3-1.1-3-3-1.1 3-1.1z"/>',
+    turtle: '<path d="M5 21c0-6 4.5-11 10-11s10 5 10 11z"/><path d="M15 10v11M10.5 13.5L12.5 21M19.5 13.5L17.5 21"/><circle cx="27.5" cy="18" r="2.6"/><path d="M9 21v3.5M21 21v3.5"/>',
     app: '<rect x="5" y="5" width="22" height="22" rx="5"/><path d="M11 16h10M16 11v10"/>'
   };
 
@@ -45,14 +46,29 @@
 
   var current = window.YEARS[0].id;
 
+  // A link like .../#year2 opens that year directly (used by the Home buttons inside lessons)
+  function yearFromHash() {
+    var id = decodeURIComponent(location.hash.replace("#", ""));
+    return window.YEARS.some(function (y) { return y.id === id; }) ? id : null;
+  }
+  current = yearFromHash() || current;
+
   function renderYears() {
     yearsBar.innerHTML = "";
     window.YEARS.forEach(function (y) {
       var b = el("button", { class: "year", type: "button", "aria-pressed": y.id === current ? "true" : "false", text: y.name });
-      b.addEventListener("click", function () { current = y.id; renderYears(); renderTiles(); });
+      b.addEventListener("click", function () {
+        current = y.id;
+        try { history.replaceState(null, "", "#" + y.id); } catch (e) {}
+        renderYears(); renderTiles();
+      });
       yearsBar.appendChild(b);
     });
   }
+  window.addEventListener("hashchange", function () {
+    var id = yearFromHash();
+    if (id && id !== current) { current = id; renderYears(); renderTiles(); }
+  });
 
   function renderTiles() {
     var year = window.YEARS.filter(function (y) { return y.id === current; })[0];
