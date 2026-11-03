@@ -15,7 +15,8 @@ window.SITE = {
 
 window.YEARS = [
   { id: "year1", name: "Year 1", blurb: "Resources and platforms for Year 1." },
-  { id: "year2", name: "Year 2", blurb: "Computing for Year 2: turtle programming, algorithms and sequences." }
+  { id: "year2", name: "Year 2", blurb: "Computing for Year 2: turtle programming, algorithms and sequences." },
+  { id: "year4", name: "Year 4", blurb: "Computing for Year 4: repetition and loops with the turtle." }
 ];
 
 window.RESOURCES = [
@@ -45,5 +46,14 @@ window.RESOURCES = [
     icon: "turtle",
     summary: "Give a turtle robot clear instructions to reach the flag. Six lessons on algorithms, order, predicting and fixing bugs.",
     url: "https://ac-turtle-maze-y2.vercel.app/"
+  },
+  {
+    year: "year4",
+    title: "Turtle Loops",
+    area: "Computing",
+    colour: "#12a36b",
+    icon: "turtle",
+    summary: "Make the turtle do more with fewer blocks. Learn repetition and loops by programming it through mazes.",
+    url: "https://ac-turtle-loops-y4.vercel.app/"
   }
 ];
