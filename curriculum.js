@@ -16,7 +16,8 @@ window.SITE = {
 window.YEARS = [
   { id: "year1", name: "Year 1", blurb: "Resources and platforms for Year 1." },
   { id: "year2", name: "Year 2", blurb: "Computing for Year 2: turtle programming, algorithms and sequences." },
-  { id: "year4", name: "Year 4", blurb: "Computing for Year 4: repetition and loops with the turtle." }
+  { id: "year4", name: "Year 4", blurb: "Computing for Year 4: repetition and loops with the turtle." },
+  { id: "csed", name: "CSEd", blurb: "Computer Science Education Week, 7 to 11 December 2026." }
 ];
 
 window.RESOURCES = [
@@ -55,5 +56,14 @@ window.RESOURCES = [
     icon: "turtle",
     summary: "Make the turtle do more with fewer blocks. Learn repetition and loops by programming it through mazes.",
     url: "https://ac-turtle-loops-y4.vercel.app/"
+  },
+  {
+    year: "csed",
+    title: "Open House",
+    area: "Computing",
+    colour: "#12a36b",
+    icon: "app",
+    summary: "Step inside the Open House and find out how computer science is part of your day. Solve the puzzles in each room to switch the lights back on.",
+    url: "https://ac-open-house.vercel.app/"
   }
 ];
